@@ -1,0 +1,6 @@
+/trackingCoinsVue
+/trackingCoinsRails
+/letsencrypt
+
+.env
+nginx.conf
