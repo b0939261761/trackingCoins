@@ -14,5 +14,5 @@
 # type docker-compose
 
 docker run --rm --name certbot --volume "/root/trackingCoins/letsencrypt:/etc/letsencrypt" certbot/certbot renew
-/usr/local/bin/docker-compose docker-compose --file /root/trackingCoins/docker-compose.yml restart nginx
+/usr/local/bin/docker-compose --file /root/trackingCoins/docker-compose.yml restart nginx
 

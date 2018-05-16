@@ -11,6 +11,15 @@ docker run --rm --name web --volume "$(pwd)/trackingCoinsVue:/app" -it node:late
 ```bahs
 # Change credentials
 docker-compose run app bundle exec rails credentials:edit
+
+# Remove directory
+rm -rf mydir
+
+# Copy file
+cp /var/www/coins/nginx.conf .
+
+# Copy directory
+cp -r /var/www/coins/site/letsencrypt/ .
 ```
 
 ## Docker clean
@@ -60,7 +69,7 @@ Conflicts=shutdown.target reboot.target halt.target
 [Service]
 Restart=always
 RestartSec=10
-WorkingDirectory=/var/www/coins
+WorkingDirectory=/root/trackingCoins
 ExecStart=/usr/local/bin/docker-compose up
 ExecStop=/usr/local/bin/docker-compose down
 LimitNOFILE=infinity
@@ -99,7 +108,7 @@ sudo systemctl restart coins
 Add certificate
 
 ```bash
-sudo docker run --rm --name certbot --volume "/var/www/coins/site/letsencrypt:/etc/letsencrypt" certbot/certbot certonly --webroot --agree-tos --manual-public-ip-logging-ok --domains domain.name --email example@example.com --webroot-path /etc/letsencrypt
+sudo docker run --rm --name certbot --volume "$(pwd)/letsencrypt:/etc/letsencrypt" certbot/certbot certonly --webroot --agree-tos --manual-public-ip-logging-ok --domains domain.name --email example@example.com --webroot-path /etc/letsencrypt
 ```
 
 Update certificate
