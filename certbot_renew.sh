@@ -2,7 +2,7 @@
 
 # Add to cron
 # crontab -e
-# 00 23 * * Sat /var/www/coins/certbot_renew.sh
+# 00 23 * * Sat /root/trackingCoins/certbot_renew.sh
 
 # Watch crom lon
 # tail /var/log/cron
