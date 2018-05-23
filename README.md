@@ -121,8 +121,8 @@ sudo docker run --rm --name certbot --volume "/root/trackingCoins/letsencrypt:/e
 
 ```txt
 # disable when not https
-ssl_certificate ssl/coins/live/realitycoins.cf/fullchain.pem;
-ssl_certificate_key ssl/coins/live/realitycoins.cf/privkey.pem;
+ssl_certificate ssl/coins/live/cryptonot.io/fullchain.pem;
+ssl_certificate_key ssl/coins/live/cryptonot.io/privkey.pem;
 
 server {
   listen 80;
@@ -130,7 +130,7 @@ server {
 
   # for certbot
   location ^~ /.well-known/acme-challenge/ {
-    root /var/www/coins/letsencrypt;
+    root /etc/nginx/ssl/coins;
   }
 
   # disable when not https
