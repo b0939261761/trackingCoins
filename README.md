@@ -134,7 +134,7 @@ server {
   }
 
   # disable when not https
-  return 301 $host$request_uri;
+  return 301 https://cryptonot.io$request_uri;
 }
 
 server {

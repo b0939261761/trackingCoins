@@ -64,8 +64,6 @@ services:
 
   nginx:
     image: nginx:alpine
-    environment:
-      NGINX_HOST: $WEB_URL
     depends_on:
       - app
     volumes:
