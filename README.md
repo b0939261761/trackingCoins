@@ -225,7 +225,7 @@ sudo chmod 700 ~/.ssh/
 sudo chmod 600 ~/.ssh/authorized_keys
 ```
 
-Travis SSH deploy only *LINUX*
+Travis SSH deploy only **LINUX**
 
 [https://oncletom.io/2016/travis-ssh-deploy/](https://oncletom.io/2016/travis-ssh-deploy/)
 
