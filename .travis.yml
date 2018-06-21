@@ -22,7 +22,8 @@ before_install:
 
 install: false
 
-script: false
+script:
+  - echo "npm test temporarily disabled"
 
 deploy:
   provider: script
