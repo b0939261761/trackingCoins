@@ -31,6 +31,6 @@ deploy:
   skip_cleanup: true
   script: bash -c '
     rsync ./{docker-compose.yml,certbot_renew.sh} $SSH_USER@$SSH_HOST:$APP_PATH/
-    && ssh root@$SSH_HOST "mkdir --parents $APP_PATH/letsencrypt1 && systemctl restart coins"'
+    && ssh root@$SSH_HOST "mkdir --parents $APP_PATH/letsencrypt && systemctl restart coins"'
   on:
     branch: master

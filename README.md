@@ -192,4 +192,51 @@ docker-compose run app bundle exec rake telegram:bot:set_webhook RAILS_ENV=produ
 
 ```bash
 docker-compose run app bundle exec rake telegram:bot:poller
-``
+```
+
+## Vue Build dist
+
+```bash
+# Set execute permission on your script
+# chmod +x build_web.sh
+
+docker run --rm --name web --volume "$(pwd)/trackingCoinsVue:/app" -it node:latest bash -c "cd /app && npm install --global npm@latest && npm install && npm run build"
+```
+
+## Delete file from all commits
+
+https://help.github.com/articles/removing-sensitive-data-from-a-repository/
+
+```bash
+git filter-branch --force --index-filter \
+'git rm --cached --ignore-unmatch PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA' \
+--prune-empty --tag-name-filter cat -- --all
+
+git commit -am 'Bla-bla-bla'
+
+git push origin --force
+```
+
+Travis SSH deploy only *LINUX*
+
+https://oncletom.io/2016/travis-ssh-deploy/
+https://www.rusiczki.net/2018/01/25/use-travis-to-build-and-deploy-your-jekyll-site-through-ssh/
+https://github.com/dwyl/learn-travis/blob/master/encrypted-ssh-keys-deployment.md
+
+Create a new SSH Key
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "TravisCIDeployKey"
+```
+
+Encrypt file 
+
+```bash
+touch .travis.yml && travis encrypt-file ./.travis/id_rsa ./.travis/id_rsa.enc --add
+```
+
+If *.travis.yml* is not add decrypt command, you run command 
+
+```bash
+travis login --org
+```
