@@ -228,7 +228,9 @@ sudo chmod 600 ~/.ssh/authorized_keys
 Travis SSH deploy only *LINUX*
 
 [https://oncletom.io/2016/travis-ssh-deploy/](https://oncletom.io/2016/travis-ssh-deploy/)
+
 [https://www.rusiczki.net/2018/01/25/use-travis-to-build-and-deploy-your-jekyll-site-through-ssh/](https://www.rusiczki.net/2018/01/25/use-travis-to-build-and-deploy-your-jekyll-site-through-ssh/)
+
 [https://github.com/dwyl/learn-travis/blob/master/encrypted-ssh-keys-deployment.md](https://github.com/dwyl/learn-travis/blob/master/encrypted-ssh-keys-deployment.md)
 
 ### Create a new SSH Key
