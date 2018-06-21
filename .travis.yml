@@ -6,6 +6,9 @@ env:
 
 sudo: false
 
+addons:
+  ssh_known_hosts: $SSH_HOST
+
 git:
   depth: false
 
@@ -30,7 +33,7 @@ deploy:
   skip_cleanup: true
   script: bash -c '
     rsync docker-compose.yml $SSH_USER@$SSH_HOST:$APP_PATH/
-    && ssh -i ./id_rsa root@$SSH_HOST "systemctl restart coins"'
+    && ssh root@$SSH_HOST "systemctl restart coins"'
   on:
     branch: master
 
