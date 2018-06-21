@@ -29,7 +29,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script: bash -c '
-    rsync -r --quiet --delete-after docker-compose.yml $SSH_USER@$SSH_HOST:$APP_PATH
+    rsync -r --quiet --delete-after ./* $SSH_USER@$SSH_HOST:$APP_PATH
     && ssh -i ./id_rsa root@$SSH_HOST "systemctl restart coins"'
   on:
     branch: master
