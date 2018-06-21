@@ -18,6 +18,7 @@ before_install:
   - eval "$(ssh-agent -s)"
   - chmod 600 ./.travis/id_rsa
   - echo -e "Host $SSH_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
   - ssh-add -l ./.travis/id_rsa
 
 install: false
