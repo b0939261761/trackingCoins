@@ -6,15 +6,15 @@ env:
 
 sudo: false
 
-addons:
-  ssh_known_hosts: $SSH_HOST
-
 git:
   depth: false
 
 branches:
   only:
     - master
+
+addons:
+  ssh_known_hosts: $SSH_HOST
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_c9e88d9eac23_key -iv $encrypted_c9e88d9eac23_iv -in ./.travis/id_rsa.enc -out ./.travis/id_rsa -d
