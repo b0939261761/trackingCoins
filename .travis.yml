@@ -2,7 +2,7 @@ language: node_js
 
 env:
   SSH_USER: root
-  APP_PATH: /root/trackingCoins1
+  APP_PATH: /root/trackingCoins
 
 sudo: false
 
@@ -30,8 +30,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script: bash -c '
-    rsync ./{lentsencrypt,docker-compose.yml,certbot_renew.sh} $SSH_USER@$SSH_HOST:$APP_PATH/
+    rsync ./{letsencrypt,docker-compose.yml,certbot_renew.sh} $SSH_USER@$SSH_HOST:$APP_PATH/
     && ssh root@$SSH_HOST "systemctl restart coins"'
   on:
     branch: master
-
