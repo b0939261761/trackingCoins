@@ -31,6 +31,7 @@ services:
       || bundle install --clean
       && rm -f tmp/pids/server.pid
       && bundle exec rails db:migrate
+      && bundle exec rails db:seed
       && bundle exec rails server"
     ports:
       - $PORT:$PORT
