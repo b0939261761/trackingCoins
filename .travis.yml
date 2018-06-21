@@ -18,6 +18,10 @@ before_install:
   - echo -e "Host $SSH_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add ./.travis/id_rsa
 
+install: false
+
+script: false
+
 deploy:
   provider: script
   skip_cleanup: true
