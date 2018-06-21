@@ -1,4 +1,6 @@
-genv:
+language: false
+
+env:
   SSH_USER: root
   APP_PATH: /root/trackingCoins1
 
