@@ -1,0 +1,45 @@
+language: node_js
+env:
+  SSH_USER: root
+  APP_PATH: /root/trackingCoins
+  DEPLOY_PATH: $APP_PATH/web
+
+sudo: false
+
+node_js:
+  - node
+
+git:
+  depth: false
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_f21500ed0193_key -iv $encrypted_f21500ed0193_iv -in ./.travis/id_rsa.enc -out ./.travis/id_rsa -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 ./.travis/id_rsa
+  - echo -e "Host $SSH_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - ssh-add ./.travis/id_rsa
+
+install:
+  - npm install
+
+script:
+  - echo "npm test temporarily disabled"
+  - npm run build
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash -c '
+    rsync -r --quiet --delete-after dist/* $SSH_USER@$SSH_HOST:$DEPLOY_PATH
+    && ssh -i ./id_rsa root@$SSH_HOST "cd $APP_PATH && docker-compose restart nginx"'
+  on:
+    branch: master
+
