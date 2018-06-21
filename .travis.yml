@@ -1,4 +1,4 @@
-language: false
+language: node_js
 
 env:
   SSH_USER: root
